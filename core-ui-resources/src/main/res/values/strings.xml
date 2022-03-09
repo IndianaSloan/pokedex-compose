@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Compose Template</string>
+    
+    <string name="destination_pokemon">Pokemon</string>
+    <string name="destination_types">Types</string>
+    <string name="destination_demo">Demo</string>
+    
+    <string name="content_desc_pokemon">Pokemon</string>
+    <string name="content_desc_types">Types</string>
+    
+</resources>

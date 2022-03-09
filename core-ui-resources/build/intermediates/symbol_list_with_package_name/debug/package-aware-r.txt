@@ -1,0 +1,19 @@
+com.fueled.core_ui_resources
+color black
+color pokedex_primary
+color pokedex_secondary
+color white
+drawable ic_back
+drawable ic_launcher_background
+drawable ic_launcher_foreground
+drawable ic_menu
+drawable ic_pool
+mipmap ic_launcher
+mipmap ic_launcher_round
+string app_name
+string content_desc_pokemon
+string content_desc_types
+string destination_demo
+string destination_pokemon
+string destination_types
+style Theme_ComposeTemplate
