@@ -44,7 +44,7 @@ internal fun PokemonCard(
             val (imageRef, textRef) = createRefs()
             Image(
                 modifier = Modifier
-                    .size(Dimens.PokemonImageSize)
+                    .size(Dimens.PokemonPreviewImageSize)
                     .constrainAs(imageRef) { center() },
                 painter = rememberImagePainter(pokemonPreview.imageUrl),
                 contentDescription = "Pokemon Image",

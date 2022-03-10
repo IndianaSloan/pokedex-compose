@@ -36,6 +36,13 @@ import com.fueled.list.domain.model.PokemonList
 import com.fueled.list.domain.model.PokemonPreview
 import com.fueled.list.domain.model.PokemonStat
 import com.fueled.list.domain.model.PokemonType
+import com.fueled.list.domain.model.StatisticType
+import com.fueled.list.domain.model.StatisticType.ATTACK
+import com.fueled.list.domain.model.StatisticType.DEFENSE
+import com.fueled.list.domain.model.StatisticType.HP
+import com.fueled.list.domain.model.StatisticType.SPECIAL_ATTACK
+import com.fueled.list.domain.model.StatisticType.SPECIAL_DEFENSE
+import com.fueled.list.domain.model.StatisticType.SPEED
 import com.fueled.list.domain.model.toPokemonList
 import javax.inject.Inject
 
@@ -69,15 +76,28 @@ internal class PokemonMapper @Inject constructor() : BaseMapper() {
             PokemonStat(
                 id = id,
                 name = statApiModel.stat.name,
+                color = mapStatisticColor(statApiModel.stat.name),
                 rawValue = statApiModel.value,
-                strength = calculateStatStrength(statApiModel.value)
+                strength = calculateStatStrength(statApiModel.value),
             )
+        }
+    }
+
+    private fun mapStatisticColor(statName: String): Color {
+        return when (StatisticType.values().first { it.statName == statName }) {
+            HP -> Color(0xFFD33A47)
+            ATTACK -> Color(0xFFFAAA22)
+            DEFENSE -> Color(0xFF0391F0)
+            SPECIAL_ATTACK -> Color(0xFFB33B17)
+            SPECIAL_DEFENSE -> Color(0xFFA52DFC)
+            SPEED -> Color(0xFF90AFC5)
         }
     }
 
     private fun mapPokemonType(apiModel: TypeApiModel): PokemonType {
         val typeName = apiModel.type.name.capitalize(Locale.current)
         return PokemonType(
+            id = apiModel.type.url.parseUrlId(),
             name = typeName,
             color = mapTypeColor(typeName)
         )

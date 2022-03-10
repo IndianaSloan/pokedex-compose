@@ -12,7 +12,8 @@ object Dimens {
     val PaddingDefault = 16.dp
 
     val PokemonGridSize = 160.dp
-    val PokemonImageSize = 100.dp
+    val PokemonPreviewImageSize = 100.dp
+    val PokemonDetailImageSize = 200.dp
 
     val TextSizeDefault = 16.sp
 }

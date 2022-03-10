@@ -1,5 +1,7 @@
 package com.fueled.list.domain.model
 
+import androidx.compose.ui.graphics.Color
+
 /**
  * A domain definition of a Pokemon's Statistic
  *
@@ -12,4 +14,5 @@ data class PokemonStat(
     val name: String,
     val rawValue: Int,
     val strength: Float,
+    val color: Color,
 )

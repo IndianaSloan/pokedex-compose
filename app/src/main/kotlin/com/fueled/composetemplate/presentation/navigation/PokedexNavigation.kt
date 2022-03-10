@@ -29,7 +29,7 @@ internal fun PokedexNavigation(
         startDestination = Destination.Pokemon.route
     ) {
         addPokemonListTopLevel(navController, setToolbarTitle)
-        addTypesTopLevel()
+        addTypesTopLevel(setToolbarTitle)
     }
 }
 
@@ -78,19 +78,25 @@ private fun NavGraphBuilder.addPokemonDetail(
     }
 }
 
-private fun NavGraphBuilder.addTypesTopLevel() {
+private fun NavGraphBuilder.addTypesTopLevel(
+    setToolbarTitle: (String) -> Unit,
+) {
     navigation(
         route = Destination.Types.route,
         startDestination = Screen.Demo.createRoute(Destination.Types)
     ) {
-        addDemo(Destination.Types)
+        addDemo(Destination.Types, setToolbarTitle)
     }
 }
 
-private fun NavGraphBuilder.addDemo(destination: Destination) {
+private fun NavGraphBuilder.addDemo(
+    destination: Destination,
+    setToolbarTitle: (String) -> Unit,
+) {
     composable(
         route = Screen.Demo.createRoute(destination)
     ) {
+        setToolbarTitle(stringResource(id = R.string.destination_demo))
         DemoScreen()
     }
 }
