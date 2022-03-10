@@ -7,10 +7,13 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.hilt.navigation.compose.hiltViewModel
 import coil.compose.rememberImagePainter
 import com.fueled.core_ui.extension.rememberFlowOnLifecycle
 import com.fueled.core_ui.presentation.components.Screen
+import com.fueled.list.domain.model.Pokemon
+import com.fueled.list.presentation.detail.components.PokemonTypesRow
 import com.fueled.list.presentation.detail.model.PokemonDetailState
 
 @Composable
@@ -35,18 +38,39 @@ internal fun PokemonDetailScreen(
         setToolbarTitle(state.pokemon?.name ?: "")
     }
 
+    ScreenContent(pokemon = state.pokemon)
+}
+
+@Composable
+private fun ScreenContent(pokemon: Pokemon?) {
     Screen {
-        state.pokemon?.let { pokemon ->
+        pokemon?.let { pokemon ->
             Column {
                 Text(text = pokemon.name)
                 Image(
                     painter = rememberImagePainter(pokemon.imageUrl),
                     contentDescription = null
                 )
-                pokemon.statistics.map { statistic -> 
+                PokemonTypesRow(types = pokemon.types)
+                pokemon.statistics.map { statistic ->
                     Text(text = "${statistic.name}: ${statistic.rawValue}")
                 }
             }
         }
     }
+    
+}
+
+@Preview(showSystemUi = true, showBackground = true, apiLevel = 26)
+@Composable
+fun PokemonDetailScreen_Preview() {
+    val pokemon = Pokemon(
+        id = "1",
+        name = "Bulbasaur",
+        imageUrl = "",
+        statistics = emptyList(),
+        weight = 100,
+        types = emptyList()
+    )
+    ScreenContent(pokemon = pokemon)
 }

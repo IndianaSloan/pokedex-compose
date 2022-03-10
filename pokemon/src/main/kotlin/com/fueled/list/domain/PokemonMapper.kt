@@ -3,7 +3,9 @@ package com.fueled.list.domain
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.capitalize
 import androidx.compose.ui.text.intl.Locale
+import androidx.compose.ui.text.toUpperCase
 import com.fueled.core.data.ApiConst
+import com.fueled.core.data.PokemonApiTypes
 import com.fueled.core.data.PokemonApiTypes.BUG
 import com.fueled.core.data.PokemonApiTypes.DARK
 import com.fueled.core.data.PokemonApiTypes.DRAGON
@@ -24,7 +26,6 @@ import com.fueled.core.data.PokemonApiTypes.SHADOW
 import com.fueled.core.data.PokemonApiTypes.STEEL
 import com.fueled.core.data.PokemonApiTypes.UNKNOWN
 import com.fueled.core.data.PokemonApiTypes.WATER
-import com.fueled.core.data.PokemonApiTypes.valueOf
 import com.fueled.core.domain.BaseMapper
 import com.fueled.list.data.model.NamedApiModel
 import com.fueled.list.data.model.PokemonApiModel
@@ -75,15 +76,15 @@ internal class PokemonMapper @Inject constructor() : BaseMapper() {
     }
 
     private fun mapPokemonType(apiModel: TypeApiModel): PokemonType {
-        val typeName = apiModel.type.name
+        val typeName = apiModel.type.name.capitalize(Locale.current)
         return PokemonType(
-            type = typeName,
+            name = typeName,
             color = mapTypeColor(typeName)
         )
     }
 
     private fun mapTypeColor(name: String): Color {
-        return when (valueOf(name)) {
+        return when (PokemonApiTypes.valueOf(name.toUpperCase(Locale.current))) {
             NORMAL -> Color(0xFFB1A5A5)
             FIGHTING -> Color(0xFF9F422A)
             FLYING -> Color(0xFF90B1C5)

@@ -5,6 +5,7 @@ import androidx.compose.ui.unit.sp
 
 object Dimens {
 
+    val PaddingEighth = 2.dp
     val PaddingFourth = 4.dp
     val PaddingHalf = 8.dp
     val PaddingTwoThirds = 12.dp
