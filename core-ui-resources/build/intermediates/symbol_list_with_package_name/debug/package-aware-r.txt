@@ -15,5 +15,6 @@ string content_desc_pokemon
 string content_desc_types
 string destination_demo
 string destination_pokemon
+string destination_pokemon_name
 string destination_types
 style Theme_ComposeTemplate

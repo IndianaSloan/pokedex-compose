@@ -12,6 +12,7 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import com.fueled.core_ui.extension.rememberFlowOnLifecycle
 import com.fueled.core_ui.presentation.components.Screen
 import com.fueled.core_ui.theme.Dimens
+import com.fueled.list.domain.model.PokemonPreview
 import com.fueled.list.presentation.list.components.PokemonCard
 import com.fueled.list.presentation.list.model.PokemonListState
 
@@ -42,7 +43,7 @@ internal fun PokemonListScreen(
             items(items = state.data) { pokemonPreview ->
                 PokemonCard(
                     pokemonPreview = pokemonPreview,
-                    onPokemonSelected = { pokemonId -> openPokemonDetail(pokemonId) },
+                    onPokemonSelected = { openPokemonDetail(pokemonPreview.id) },
                 )
             }
         }

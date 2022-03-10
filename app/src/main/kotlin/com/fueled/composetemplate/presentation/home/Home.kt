@@ -6,8 +6,10 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.material.*
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.saveable.rememberSaveable
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.navigation.compose.rememberNavController
 import coil.compose.rememberImagePainter
@@ -20,6 +22,8 @@ import com.fueled.core_ui_resources.R
 internal fun Home() {
     val navController = rememberNavController()
     val currentDestination by navController.currentDestinationAsState()
+    var toolbarText by rememberSaveable { mutableStateOf("") }
+
     Scaffold(
         bottomBar = {
             HomeBottomNavigation(
@@ -44,7 +48,7 @@ internal fun Home() {
                 },
                 title = {
                     Text(
-                        text = stringResource(currentDestination.screenTitleRes),
+                        text = toolbarText,
                         style = MaterialTheme.typography.h1,
                     )
                 },
@@ -53,10 +57,11 @@ internal fun Home() {
         }
     ) {
         PokedexNavigation(
-            navController = navController,
             modifier = Modifier
                 .fillMaxHeight()
-                .padding(bottom = 56.dp)
+                .padding(bottom = 56.dp),
+            navController = navController,
+            setToolbarTitle = { title -> toolbarText = title }
         )
     }
 }

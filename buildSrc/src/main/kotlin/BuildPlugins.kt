@@ -1,8 +1,8 @@
 object BuildPlugins {
 
     object Version {
-        const val ANDROID_APPLICATION = "7.1.0"
-        const val ANDROID_LIBRARY = "7.1.0"
+        const val ANDROID_APPLICATION = "7.1.2"
+        const val ANDROID_LIBRARY = "7.1.2"
         const val KOTLIN_ANDROID = "1.6.10"
         const val HILT = "2.38.1"
     }

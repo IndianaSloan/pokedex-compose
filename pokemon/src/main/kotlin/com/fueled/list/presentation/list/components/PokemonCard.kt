@@ -27,14 +27,14 @@ import com.fueled.list.domain.model.PokemonPreview
 internal fun PokemonCard(
     pokemonPreview: PokemonPreview,
     modifier: Modifier = Modifier,
-    onPokemonSelected: (String) -> Unit = { _ -> },
+    onPokemonSelected: () -> Unit = { },
 ) {
     Card(
         modifier = modifier
             .padding(Dimens.PaddingTwoThirds)
             .fillMaxWidth(0.5F)
             .aspectRatio(1F, false)
-            .clickable { onPokemonSelected(pokemonPreview.id) },
+            .clickable { onPokemonSelected() },
         shape = RoundedCornerShape(12.dp),
     ) {
         ConstraintLayout(
@@ -62,6 +62,6 @@ internal fun PokemonCard(
 @Preview(showSystemUi = true, apiLevel = 26)
 @Composable
 private fun PokemonCardPreview() {
-    val previewPokemon = PokemonPreview("1", "Bulbasaur", ApiConst.BASE_IMAGE_URL.format("1"))
+    val previewPokemon = PokemonPreview("1", "Bulbasaur", ApiConst.POKEMON_IMAGE_URL.format("1"))
     PokemonCard(pokemonPreview = previewPokemon)
 }

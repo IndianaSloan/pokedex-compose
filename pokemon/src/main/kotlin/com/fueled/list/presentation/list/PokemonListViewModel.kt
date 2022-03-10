@@ -6,6 +6,8 @@ import com.fueled.core.domain.model.RepositoryResult
 import com.fueled.core.domain.model.onError
 import com.fueled.core.domain.model.onSuccess
 import com.fueled.core.presentation.BaseViewModel
+import com.fueled.core_ui.extension.onError
+import com.fueled.core_ui.extension.onSuccess
 import com.fueled.list.domain.PokemonRepository
 import com.fueled.list.domain.model.PokemonList
 import com.fueled.list.presentation.list.model.PokemonListState
@@ -17,7 +19,7 @@ import javax.inject.Inject
 
 @HiltViewModel
 internal class PokemonListViewModel @Inject constructor(
-    private val savedStateHandle: SavedStateHandle,
+    savedStateHandle: SavedStateHandle,
     private val pokemonRepository: PokemonRepository,
 ) : BaseViewModel<PokemonListState>(PokemonListState()) {
 

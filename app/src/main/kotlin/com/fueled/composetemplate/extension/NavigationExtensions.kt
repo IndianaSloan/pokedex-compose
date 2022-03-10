@@ -1,8 +1,11 @@
 package com.fueled.composetemplate.extension
 
 import androidx.annotation.StringRes
-import androidx.compose.runtime.*
-import androidx.compose.ui.res.stringResource
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.DisposableEffect
+import androidx.compose.runtime.State
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
 import androidx.navigation.NavController
 import androidx.navigation.NavDestination.Companion.hierarchy
 import androidx.navigation.NavGraph.Companion.findStartDestination
@@ -23,7 +26,7 @@ internal fun NavController.navigateToTab(destination: Destination) {
 @Composable
 internal fun NavController.currentDestinationAsState(): State<DestinationState> {
     val state = remember {
-        mutableStateOf(DestinationState(Destination.Pokemon, true, R.string.app_name))
+        mutableStateOf(DestinationState(Destination.Pokemon, true))
     }
     DisposableEffect(this) {
         val listener = NavController.OnDestinationChangedListener { _, dest, _ ->
@@ -37,9 +40,8 @@ internal fun NavController.currentDestinationAsState(): State<DestinationState> 
                 else -> return@OnDestinationChangedListener
             }
 
-            val screenTitleRes = Screen.getScreenTitleForRoute(dest.route, topLevelDestination)
             val isTopLevel = Screen.isTopLevelDest(dest.route)
-            state.value = DestinationState(topLevelDestination, isTopLevel, screenTitleRes)
+            state.value = DestinationState(topLevelDestination, isTopLevel)
         }
         addOnDestinationChangedListener(listener)
         onDispose {
@@ -51,6 +53,5 @@ internal fun NavController.currentDestinationAsState(): State<DestinationState> 
 
 data class DestinationState(
     val destination: Destination,
-    val isTopLevel: Boolean,
-    @StringRes val screenTitleRes: Int
+    val isTopLevel: Boolean
 )

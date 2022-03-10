@@ -4,8 +4,8 @@
 4
 5    <uses-sdk
 6        android:minSdkVersion="26"
-6-->/Users/ciaransloan/dev/personal/android/ComposeTemplate/core-ui-resources/src/main/AndroidManifest.xml
+6-->/Users/ciaransloan/dev/android/pokedex/core-ui-resources/src/main/AndroidManifest.xml
 7        android:targetSdkVersion="26" />
-7-->/Users/ciaransloan/dev/personal/android/ComposeTemplate/core-ui-resources/src/main/AndroidManifest.xml
+7-->/Users/ciaransloan/dev/android/pokedex/core-ui-resources/src/main/AndroidManifest.xml
 8
 9</manifest>

@@ -9,6 +9,7 @@
     <string name="content_desc_types">Types</string>
     <string name="destination_demo">Demo</string>
     <string name="destination_pokemon">Pokemon</string>
+    <string name="destination_pokemon_name">%1$s</string>
     <string name="destination_types">Types</string>
     <style name="Theme.ComposeTemplate" parent="android:Theme.Material.Light.NoActionBar">
         <item name="android:statusBarColor">@color/pokedex_primary</item>

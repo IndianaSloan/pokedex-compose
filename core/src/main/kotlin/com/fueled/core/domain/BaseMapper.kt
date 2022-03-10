@@ -21,6 +21,20 @@ abstract class BaseMapper {
         }
     }
 
+    /**
+     * Unpacks the data from a ResponseApiModel
+     *
+     * @param callName for logging
+     */
+    fun <T> mapApiResult(
+        apiResult: ApiResult<T>,
+        callName: String
+    ): RepositoryResult<T> {
+        return map(apiResult) {
+            it.data ?: throw ApiMappingException("Missing payload from $callName")
+        }
+    }
+
     private fun <T, R> map(
         apiResult: ApiResult<T>,
         transform: (ApiResult.Success<T>) -> R

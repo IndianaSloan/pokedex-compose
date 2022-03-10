@@ -14,5 +14,6 @@ int string content_desc_pokemon 0x0
 int string content_desc_types 0x0
 int string destination_demo 0x0
 int string destination_pokemon 0x0
+int string destination_pokemon_name 0x0
 int string destination_types 0x0
 int style Theme_ComposeTemplate 0x0

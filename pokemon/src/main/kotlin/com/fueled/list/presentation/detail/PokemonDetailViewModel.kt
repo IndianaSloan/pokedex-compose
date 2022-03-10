@@ -8,7 +8,7 @@ import com.fueled.core.domain.model.onSuccess
 import com.fueled.core.presentation.BaseViewModel
 import com.fueled.core.presentation.ScreenArgs
 import com.fueled.list.domain.PokemonRepository
-import com.fueled.list.domain.model.PokemonPreview
+import com.fueled.list.domain.model.Pokemon
 import com.fueled.list.presentation.detail.model.PokemonDetailState
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.collect
@@ -34,9 +34,9 @@ internal class PokemonDetailViewModel @Inject constructor(
             .collect()
     }
 
-    private fun onPokemonRetrieved(result: RepositoryResult<PokemonPreview>) {
+    private fun onPokemonRetrieved(result: RepositoryResult<Pokemon>) {
         result.onSuccess { pokemon ->
-            // GOT POKEMON
+            currentState = currentState.copy(isLoading = false, pokemon = pokemon)
         }.onError(::handleError)
     }
 

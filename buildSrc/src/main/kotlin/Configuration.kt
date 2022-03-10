@@ -4,7 +4,7 @@ object Configuration {
 }
 
 data class DefaultConfig(
-    val packageName: String = "com.fueled.composetemplate",
+    val packageName: String = "com.ciaransloan.pokedexcompose",
     val targetSdk: Int = 31,
     val compileSdk: Int = 31,
     val minSdk: Int = 26,
