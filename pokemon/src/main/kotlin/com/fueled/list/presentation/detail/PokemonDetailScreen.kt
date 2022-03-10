@@ -5,7 +5,6 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
-import androidx.compose.runtime.SideEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.hilt.navigation.compose.hiltViewModel
@@ -45,7 +44,7 @@ internal fun PokemonDetailScreen(
                     contentDescription = null
                 )
                 pokemon.statistics.map { statistic -> 
-                    Text(text = "${statistic.name}: ${statistic.value}")
+                    Text(text = "${statistic.name}: ${statistic.rawValue}")
                 }
             }
         }

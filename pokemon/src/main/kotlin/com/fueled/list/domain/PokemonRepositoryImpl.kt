@@ -4,8 +4,8 @@ import com.fueled.core.base.DispatcherProvider
 import com.fueled.core.domain.model.RepositoryResult
 import com.fueled.core.domain.model.flatMap
 import com.fueled.list.data.PokemonApi
+import com.fueled.list.data.model.NamedApiModel
 import com.fueled.list.data.model.PokemonApiModel
-import com.fueled.list.data.model.PokemonPreviewApiModel
 import com.fueled.list.domain.model.Pokemon
 import com.fueled.list.domain.model.PokemonList
 import kotlinx.coroutines.flow.Flow
@@ -29,7 +29,7 @@ internal class PokemonRepositoryImpl @Inject constructor(
         emit(result)
     }
 
-    private suspend fun fetchPokemon(): RepositoryResult<List<PokemonPreviewApiModel>> {
+    private suspend fun fetchPokemon(): RepositoryResult<List<NamedApiModel>> {
         return pokemonApi.getPokemonList().run {
             pokemonMapper.mapApiResponse(this, "[GET] /pokemon")
         }

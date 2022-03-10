@@ -6,5 +6,7 @@ import com.squareup.moshi.JsonClass
 data class PokemonApiModel(
     val id: Int,
     val name: String,
-    val stats: List<BaseStatApiModel>,
+    val stats: List<StatApiModel>,
+    val weight: Int,
+    val types: List<TypeApiModel>,
 )

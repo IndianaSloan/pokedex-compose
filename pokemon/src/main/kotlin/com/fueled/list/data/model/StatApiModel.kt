@@ -5,7 +5,7 @@ import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
 
 @JsonClass(generateAdapter = true)
-data class BaseStatApiModel(
+data class StatApiModel(
     @field:Json(name = ApiFields.BASE_STAT) val value: Int,
-    val stat: StatisticApiModel,
+    val stat: NamedApiModel,
 )
