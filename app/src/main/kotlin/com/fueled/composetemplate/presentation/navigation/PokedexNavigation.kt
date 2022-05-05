@@ -33,6 +33,9 @@ internal fun PokedexNavigation(
     }
 }
 
+/**
+ * Nested navigation graph for the `Pokemon` Bottom tab navigation destinations
+ */
 private fun NavGraphBuilder.addPokemonListTopLevel(
     navController: NavController,
     setToolbarTitle: (String) -> Unit,
@@ -78,6 +81,9 @@ private fun NavGraphBuilder.addPokemonDetail(
     }
 }
 
+/**
+ * Nested navigation graph for the `Types` Bottom tab navigation destinations
+ */
 private fun NavGraphBuilder.addTypesTopLevel(
     setToolbarTitle: (String) -> Unit,
 ) {
